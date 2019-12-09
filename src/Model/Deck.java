@@ -21,10 +21,6 @@ public class Deck {
         return cards;
     }
 
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
-    }
-
     @Override
     public String toString() {
         return this.cards.toString();

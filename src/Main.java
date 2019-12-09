@@ -11,7 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("View/Game.fxml"));
         primaryStage.setTitle("Black Jack - Daniel Hughes");
-        primaryStage.setScene(new Scene(root, 650, 550));
+        primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

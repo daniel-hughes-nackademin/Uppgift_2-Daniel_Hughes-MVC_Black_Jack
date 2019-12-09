@@ -24,12 +24,17 @@ public class Card {
         }
     }
 
+
     public Suit getSuit() {
         return suit;
     }
 
     public Value getValue() {
         return value;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public int getPoints() {

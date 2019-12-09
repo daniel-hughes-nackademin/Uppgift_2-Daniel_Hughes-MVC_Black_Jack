@@ -2,23 +2,23 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
     <TextArea fx:id="playerTextArea" editable="false" layoutX="260.0" layoutY="299.0" prefHeight="153.0" prefWidth="343.0" />
-    <Button layoutX="260.0" layoutY="487.0" mnemonicParsing="false" text="Button" />
-    <Button layoutX="406.0" layoutY="487.0" mnemonicParsing="false" text="Button" />
-    <TextArea fx:id="opponentTextArea" editable="false" layoutX="260.0" layoutY="52.0" prefHeight="153.0" prefWidth="343.0" />
-    <ImageView fx:id="opponentImage" fitHeight="150.0" fitWidth="200.0" layoutX="29.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
-    <Label layoutX="29.0" layoutY="229.0" prefHeight="44.0" prefWidth="137.0" text="Opponent Points">
+    <Button fx:id="takeCardButton" layoutX="319.0" layoutY="478.0" mnemonicParsing="false" onAction="#takeCard" prefHeight="34.0" prefWidth="82.0" text="Take Card" />
+    <TextArea fx:id="dealerTextArea" editable="false" layoutX="260.0" layoutY="52.0" prefHeight="153.0" prefWidth="343.0" />
+    <ImageView fx:id="dealerImage" fitHeight="150.0" fitWidth="200.0" layoutX="29.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
+    <Label layoutX="29.0" layoutY="229.0" prefHeight="44.0" prefWidth="137.0" text="Dealer Points">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label fx:id="oppPointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="235.0" prefHeight="34.0" prefWidth="68.0" text="0">
+    <Label fx:id="dealerPointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="235.0" prefHeight="34.0" prefWidth="68.0" text="0">
         <font>
           <Font size="16.0" />
         </font>
@@ -34,34 +34,48 @@
         </font>
     </Label>
     <ImageView fx:id="playerImage" fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true" />
-    <Label layoutX="319.0" layoutY="247.0" prefHeight="44.0" prefWidth="41.0" text="You:">
+    <Label layoutX="337.0" layoutY="247.0" prefHeight="44.0" prefWidth="41.0" text="You:">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="355.0" layoutY="252.0" prefHeight="34.0" prefWidth="42.0" text="0">
+    <Label fx:id="playerRoundsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="373.0" layoutY="252.0" prefHeight="34.0" prefWidth="42.0" text="0">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label layoutX="439.0" layoutY="247.0" prefHeight="44.0" prefWidth="82.0" text="Opponent:">
+    <Label layoutX="460.0" layoutY="247.0" prefHeight="44.0" prefWidth="82.0" text="Dealer:">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="521.0" layoutY="252.0" prefHeight="34.0" prefWidth="42.0" text="0">
+    <Label fx:id="dealerRoundsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="252.0" prefHeight="34.0" prefWidth="42.0" text="0">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="403.0" layoutY="251.0" prefHeight="26.0" prefWidth="17.0" text="-">
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="423.0" layoutY="253.0" prefHeight="26.0" prefWidth="17.0" text="-">
         <font>
           <Font name="System Bold" size="22.0" />
         </font>
     </Label>
-    <Label layoutX="383.0" layoutY="234.0" text="Rounds Won">
+    <Label layoutX="391.0" layoutY="235.0" text="Rounds Won">
         <font>
           <Font name="System Bold" size="16.0" />
         </font>
     </Label>
+   <Button layoutX="634.0" layoutY="408.0" mnemonicParsing="false" onAction="#startGame" prefHeight="44.0" prefWidth="137.0" text="New Game" />
+   <Label layoutX="634.0" layoutY="279.0" prefHeight="25.0" prefWidth="97.0" text="Nr of Decks">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <Label layoutX="634.0" layoutY="343.0" prefHeight="25.0" prefWidth="97.0" text="Nr of Rounds">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <Button fx:id="holdButton" layoutX="460.0" layoutY="478.0" mnemonicParsing="false" onAction="#hold" prefHeight="34.0" prefWidth="82.0" text="Hold" />
+   <Slider fx:id="decksSlider" layoutX="633.0" layoutY="304.0" majorTickUnit="1.0" max="8.0" min="2.0" minorTickCount="0" onMouseReleased="#setNumberOfDecks" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4.0" />
+   <Slider fx:id="roundsSlider" layoutX="633.0" layoutY="368.0" majorTickUnit="1.0" max="8.0" min="1.0" minorTickCount="0" onMouseReleased="#setNumberOfRounds" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
 </AnchorPane>
