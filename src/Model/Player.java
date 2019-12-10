@@ -2,7 +2,7 @@ package Model;
 
 import Interfaces.Observer;
 import Interfaces.Subject;
-import Utility.GameUpdate;
+import Utility.PlayerUpdate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,23 +29,25 @@ public class Player implements Subject {
 
         if(!isDealer){
             //update hand to player
+            notifyUpdate(new PlayerUpdate(PlayerUpdate.UpdateType.PLAYER_CARD, drawnCard.toString()));
         }
 
-
+        setPoints(this.points + drawnCard.getPoints());
     }
 
     public void changeAceValue(){
         for (Card card : this.hand) {
             if(card.getValue().equals(Value.ACE) && card.getPoints() == 10){
                 card.setPoints(1);
+                setPoints(this.points - 9);
                 break;
             }
         }
-        System.out.println("There were no 10 point aces");
     }
 
     public void emptyHand(){
         this.hand = new ArrayList<>();
+        this.points = 0;
     }
 
     public List<Card> getHand() {
@@ -55,27 +57,34 @@ public class Player implements Subject {
     public void setPoints(int points) {
         this.points = points;
         if(!isDealer)
-            notifyUpdate(new GameUpdate(GameUpdate.UpdateType.PLAYER_SCORE, this.getPoints()));
+            notifyUpdate(new PlayerUpdate(PlayerUpdate.UpdateType.PLAYER_SCORE, this.getPoints()));
     }
 
     public int getPoints() {
         return points;
     }
 
+    public void revealDealerHand(){
+        if(this.isDealer){
+            notifyUpdate(new PlayerUpdate(PlayerUpdate.UpdateType.DEALER_SCORE, this.points));
+            StringBuilder handString = new StringBuilder();
+            this.getHand().forEach(card -> handString.append(card.toString() + " "));
+            notifyUpdate(new PlayerUpdate(PlayerUpdate.UpdateType.DEALER_HAND, handString.toString()));
+        }
+        else
+            throw new IllegalCallerException("Only dealer can reveal hand!");
+    }
+
     public void winRound() {
         this.roundsWon++;
         if(isDealer)
-            notifyUpdate(new GameUpdate(GameUpdate.UpdateType.DEALER_ROUNDS, this.roundsWon));
+            notifyUpdate(new PlayerUpdate(PlayerUpdate.UpdateType.DEALER_ROUNDS, this.roundsWon));
         else
-            notifyUpdate(new GameUpdate(GameUpdate.UpdateType.PLAYER_ROUNDS, this.roundsWon));
+            notifyUpdate(new PlayerUpdate(PlayerUpdate.UpdateType.PLAYER_ROUNDS, this.roundsWon));
     }
 
     public int getRoundsWon() {
         return roundsWon;
-    }
-
-    public boolean isDealer() {
-        return isDealer;
     }
 
     public void setDealer(boolean dealer) {
@@ -93,7 +102,7 @@ public class Player implements Subject {
     }
 
     @Override
-    public void notifyUpdate(GameUpdate gameUpdate) {
-        observers.forEach(observer -> observer.update(gameUpdate));
+    public void notifyUpdate(Object playerUpdate) {
+        observers.forEach(observer -> observer.update(playerUpdate));
     }
 }

@@ -23,6 +23,14 @@ public class SettingsManager {
         return numberOfRounds;
     }
 
+    public static int readBlackJackScoreFromProperties() {
+        Properties properties = getProperties();
+        int blackJackScore = Integer.parseInt(properties.getProperty("blackJackScore"));
+        if(blackJackScore < 1)
+            throw new IllegalArgumentException("Black Jack Score must be at least 1, but standard is 21.");
+        return blackJackScore;
+    }
+
     public static void writeNumberOfDecksToProperties(int numberOfDecks){
         if(numberOfDecks < 2 || numberOfDecks > 8)
             throw new IllegalArgumentException("Invalid number of Decks!");

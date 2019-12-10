@@ -3,54 +3,35 @@ package Utility;
 public class GameUpdate {
 
     public enum UpdateType{
-        PLAYER_SCORE,
-        DEALER_SCORE,
-        PLAYER_ROUNDS,
-        DEALER_ROUNDS,
-        PLAYER_HAND,
-        DEALER_HAND,
-        DEALER_NR_CARDS
+        ROUND_END,
+        GAME_END
     }
-
 
     private UpdateType updateType;
     private String message;
-    private int value;
+    private String dealerEvent;
+    private String playerEvent;
 
-    public GameUpdate(UpdateType updateType, String message) {
+    public GameUpdate(UpdateType updateType, String message, String dealerEvent, String playerEvent) {
         this.updateType = updateType;
         this.message = message;
-    }
-
-    public GameUpdate(UpdateType updateType, int value) {
-        this.updateType = updateType;
-        this.value = value;
+        this.dealerEvent = dealerEvent;
+        this.playerEvent = playerEvent;
     }
 
     public UpdateType getUpdateType() {
         return updateType;
     }
 
-    public void setUpdateType(UpdateType updateType) {
-        this.updateType = updateType;
-    }
-
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public String getDealerEvent() {
+        return dealerEvent;
     }
 
-    public int getValue() {
-        return value;
+    public String getPlayerEvent() {
+        return playerEvent;
     }
-
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-
-
 }

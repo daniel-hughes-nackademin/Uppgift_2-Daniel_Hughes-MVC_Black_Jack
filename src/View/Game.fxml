@@ -9,57 +9,63 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
-    <TextArea fx:id="playerTextArea" editable="false" layoutX="260.0" layoutY="299.0" prefHeight="153.0" prefWidth="343.0" />
-    <Button fx:id="takeCardButton" layoutX="319.0" layoutY="478.0" mnemonicParsing="false" onAction="#takeCard" prefHeight="34.0" prefWidth="82.0" text="Take Card" />
-    <TextArea fx:id="dealerTextArea" editable="false" layoutX="260.0" layoutY="52.0" prefHeight="153.0" prefWidth="343.0" />
-    <ImageView fx:id="dealerImage" fitHeight="150.0" fitWidth="200.0" layoutX="29.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
-    <Label layoutX="29.0" layoutY="229.0" prefHeight="44.0" prefWidth="137.0" text="Dealer Points">
+    <TextArea fx:id="playerTextArea" editable="false" layoutX="260.0" layoutY="299.0" prefHeight="153.0" prefWidth="343.0" wrapText="true">
+      <font>
+         <Font size="20.0" />
+      </font></TextArea>
+    <Button fx:id="takeCardButton" layoutX="284.0" layoutY="468.0" mnemonicParsing="false" onAction="#takeCard" prefHeight="44.0" prefWidth="119.0" text="Start Round" visible="false" />
+    <TextArea fx:id="dealerTextArea" editable="false" layoutX="260.0" layoutY="52.0" prefHeight="153.0" prefWidth="343.0" wrapText="true">
+      <font>
+         <Font size="20.0" />
+      </font></TextArea>
+    <ImageView fx:id="dealerImage" fitHeight="150.0" fitWidth="177.0" layoutX="50.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
+    <Label fx:id="label1" layoutX="29.0" layoutY="229.0" prefHeight="44.0" prefWidth="137.0" text="Dealer Points" visible="false">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label fx:id="dealerPointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="235.0" prefHeight="34.0" prefWidth="68.0" text="0">
+    <Label fx:id="dealerPointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="235.0" prefHeight="34.0" prefWidth="68.0" text="0" visible="false">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label layoutX="29.0" layoutY="465.0" prefHeight="44.0" prefWidth="137.0" text="Player Points">
+    <Label fx:id="label2" layoutX="29.0" layoutY="465.0" prefHeight="44.0" prefWidth="137.0" text="Player Points" visible="false">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label fx:id="playerPointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="470.0" prefHeight="34.0" prefWidth="68.0" text="0">
+    <Label fx:id="playerPointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="470.0" prefHeight="34.0" prefWidth="68.0" text="0" visible="false">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
     <ImageView fx:id="playerImage" fitHeight="150.0" fitWidth="200.0" layoutX="35.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true" />
-    <Label layoutX="337.0" layoutY="247.0" prefHeight="44.0" prefWidth="41.0" text="You:">
+    <Label fx:id="label3" layoutX="337.0" layoutY="247.0" prefHeight="44.0" prefWidth="41.0" text="You:" visible="false">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label fx:id="playerRoundsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="373.0" layoutY="252.0" prefHeight="34.0" prefWidth="42.0" text="0">
+    <Label fx:id="playerRoundsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="373.0" layoutY="252.0" prefHeight="34.0" prefWidth="42.0" text="0" visible="false">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label layoutX="460.0" layoutY="247.0" prefHeight="44.0" prefWidth="82.0" text="Dealer:">
+    <Label fx:id="label5" layoutX="460.0" layoutY="247.0" prefHeight="44.0" prefWidth="82.0" text="Dealer:" visible="false">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label fx:id="dealerRoundsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="252.0" prefHeight="34.0" prefWidth="42.0" text="0">
+    <Label fx:id="dealerRoundsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="252.0" prefHeight="34.0" prefWidth="42.0" text="0" visible="false">
         <font>
           <Font size="16.0" />
         </font>
     </Label>
-    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="423.0" layoutY="253.0" prefHeight="26.0" prefWidth="17.0" text="-">
+    <Label fx:id="label4" alignment="CENTER" contentDisplay="CENTER" layoutX="423.0" layoutY="253.0" prefHeight="26.0" prefWidth="17.0" text="-" visible="false">
         <font>
           <Font name="System Bold" size="22.0" />
         </font>
     </Label>
-    <Label layoutX="391.0" layoutY="235.0" text="Rounds Won">
+    <Label fx:id="eventLabel" alignment="CENTER" layoutX="256.0" layoutY="235.0" prefHeight="25.0" prefWidth="343.0" text="Welcome To Black Jack!">
         <font>
           <Font name="System Bold" size="16.0" />
         </font>
@@ -75,7 +81,32 @@
          <Font size="16.0" />
       </font>
    </Label>
-   <Button fx:id="holdButton" layoutX="460.0" layoutY="478.0" mnemonicParsing="false" onAction="#hold" prefHeight="34.0" prefWidth="82.0" text="Hold" />
+   <Button fx:id="holdButton" layoutX="454.0" layoutY="468.0" mnemonicParsing="false" onAction="#hold" prefHeight="44.0" prefWidth="119.0" text="Hold" visible="false" />
    <Slider fx:id="decksSlider" layoutX="633.0" layoutY="304.0" majorTickUnit="1.0" max="8.0" min="2.0" minorTickCount="0" onMouseReleased="#setNumberOfDecks" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4.0" />
    <Slider fx:id="roundsSlider" layoutX="633.0" layoutY="368.0" majorTickUnit="1.0" max="8.0" min="1.0" minorTickCount="0" onMouseReleased="#setNumberOfRounds" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+   <Label fx:id="gamesWonLabel1" layoutX="634.0" layoutY="52.0" prefHeight="27.0" prefWidth="119.0" text="Games Won:" visible="false">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Label fx:id="gamesWonLabel2" layoutX="633.0" layoutY="89.0" prefHeight="17.0" prefWidth="68.0" text="Player" visible="false">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <Label fx:id="gamesWonLabel3" layoutX="633.0" layoutY="129.0" prefHeight="17.0" prefWidth="68.0" text="Dealer" visible="false">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <Label fx:id="playerGamesWonLabel" alignment="CENTER" layoutX="703.0" layoutY="89.0" prefHeight="25.0" prefWidth="41.0" text="0" visible="false">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <Label fx:id="dealerGamesWonLabel" alignment="CENTER" layoutX="703.0" layoutY="129.0" prefHeight="25.0" prefWidth="41.0" text="0" visible="false">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
 </AnchorPane>
