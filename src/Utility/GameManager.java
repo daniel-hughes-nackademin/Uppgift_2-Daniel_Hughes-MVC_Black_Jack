@@ -29,8 +29,6 @@ public class GameManager implements Subject { //Facade class
         for (int i = 0; i < numberOfDecks; i++) {
             game.getCardPile().addAll(new Deck().getCards());
         }
-        System.out.println(game.getCardPile().toString());
-        System.out.println(game.getCardPile().size());
     }
 
     public void playDealerRound(){
@@ -62,15 +60,15 @@ public class GameManager implements Subject { //Facade class
 
         if(game.getPlayer().getPoints() > game.getBlackJackScore()){ //Player went bust
             game.getDealer().winRound();
-            notifyUpdate(new GameUpdate(GameUpdate.UpdateType.ROUND_END, "Player Went Bust! Dealer Wins Round!", "Round Win", "Went Bust"));
+            notifyUpdate(new GameUpdate(GameUpdate.UpdateType.ROUND_END, "You Went Bust! Dealer Wins Round!", "Round Win", "Went Bust"));
         }
         else if(game.getDealer().getPoints() > game.getBlackJackScore()){ //Dealer went bust
             game.getPlayer().winRound();
-            notifyUpdate(new GameUpdate(GameUpdate.UpdateType.ROUND_END, "Dealer Went Bust! Player Wins Round!", "Went Bust", "Round Win"));
+            notifyUpdate(new GameUpdate(GameUpdate.UpdateType.ROUND_END, "Dealer Went Bust! You Win the Round!", "Went Bust", "Round Win"));
         }
         else if(game.getPlayer().getPoints() > game.getDealer().getPoints()){ //Player wins by points
             game.getPlayer().winRound();
-            notifyUpdate(new GameUpdate(GameUpdate.UpdateType.ROUND_END, "Player Wins Round!", "Round Loss", "Round Win"));
+            notifyUpdate(new GameUpdate(GameUpdate.UpdateType.ROUND_END, "You Win the Round!", "Round Loss", "Round Win"));
         }
         else if (game.getPlayer().getPoints() == game.getDealer().getPoints()){ //Round draw
             notifyUpdate(new GameUpdate(GameUpdate.UpdateType.ROUND_END, "Round Draw!", "Normal", "Normal"));

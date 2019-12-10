@@ -56,7 +56,6 @@ public class GameController {
     public void takeCard(ActionEvent actionEvent) {
         if(takeCardButton.getText().equals("Start Round") || takeCardButton.getText().equals("Next Round")){
             takeCardButton.setText("Take Card");
-            playerTextArea.setText("Your cards:\n");
             eventLabel.setText("Rounds Won:");
             holdButton.setVisible(true);
             gameManager.playDealerRound();
@@ -66,6 +65,9 @@ public class GameController {
             changePlayerImage("Normal");
         }
         else if(takeCardButton.getText().equals("Take Card")){
+            if(playerTextArea.getText().equals("Your Turn!")){
+                playerTextArea.setText("Your Hand:\n");
+            }
             gameManager.drawPlayerCard();
         }
     }

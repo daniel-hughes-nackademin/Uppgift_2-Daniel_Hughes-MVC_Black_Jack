@@ -40,7 +40,7 @@ public class GameListener implements Observer {
                     break;
                 case DEALER_NR_CARDS:
                     gameController.dealerTextArea.setText("Dealer drew " + valueString + " cards!");
-                    gameController.playerTextArea.setText("Your Turn!\n");
+                    gameController.playerTextArea.setText("Your Turn!");
                     gameController.takeCardButton.setVisible(true);
                     break;
             }
@@ -59,9 +59,7 @@ public class GameListener implements Observer {
                     if (gameUpdate.getPlayerEvent().equals("Game Win")) {
 
                         int playerGamesWon = Integer.parseInt(gameController.playerGamesWonLabel.getText()) + 1;
-                        Platform.runLater(() -> {
-                            gameController.playerGamesWonLabel.setText(String.valueOf(playerGamesWon));
-                        });
+                        Platform.runLater(() -> gameController.playerGamesWonLabel.setText(String.valueOf(playerGamesWon)));
                     } else {
                         int dealerGamesWon = Integer.parseInt(gameController.dealerGamesWonLabel.getText()) + 1;
                         Platform.runLater(() -> gameController.dealerGamesWonLabel.setText(String.valueOf(dealerGamesWon)));
@@ -85,7 +83,7 @@ public class GameListener implements Observer {
         gameController.playerGamesWonLabel.setVisible(true);
     }
 
-    public void performEndOfRoundEvents() {
+    private void performEndOfRoundEvents() {
         gameController.holdButton.setVisible(false);
         gameController.takeCardButton.setText("Next Round");
         gameController.dealerPointsLabel.setText("?");
